@@ -14,5 +14,13 @@ const notes = [
 
 notes[2] = 'new note 3'
 
+
+notes.forEach(function(item,index){
+    console.log(index)
+    console.log(item)
+});
+
+
+
 console.log(notes.length)
 console.log(notes)
