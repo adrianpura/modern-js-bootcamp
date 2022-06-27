@@ -1,26 +1,39 @@
 const todos = [
-    'Todo 1',
-    'Todo 2',
-    'Todo 3',
-    'Todo 4',
-    'Todo 5',
+    {
+        text: 'Todo 1',
+        completed: true
+    },
+    {
+        text: 'Todo 2',
+        completed: false
+    },
+    {
+        text: 'Todo 3',
+        completed: true
+    },
+    {
+        text: 'Todo 4',
+        completed: false
+    },
+    {
+        text: 'Todo 5',
+        completed: true
+    }
 ]
 
-//delete 3rd item
-//add item onto the end
-//remove the first item from the list
-
-todos.splice(2, 1)
-todos.push('added last item')
-todos.shift()
-
-
-console.log(`You have ${todos.length} todos`)
-
-todos.forEach(function (item, index) {
-    console.log(`${index + 1}. ${item}`)
-})
-
-for (let count = 0; count < todos.length; count++) {
-    console.log(`${count + 1}. ${todos[count]}`)
+const deleteTodo = function (todos, todoText) {
+    const index = todos.findIndex(function (todo) {
+        return todo.text.toLowerCase() === todoText.toLowerCase() ?? index
+    })
+    if (index > -1) {
+        todos.splice(index, 1)
+    }
 }
+
+const getThingsToDo = function (todos) {
+    return todos.filter(function (todo, index) {
+        return todo.completed === false
+    })
+}
+
+console.log(getThingsToDo(todos))

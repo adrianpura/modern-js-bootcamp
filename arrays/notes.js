@@ -1,34 +1,42 @@
 const notes = [
-    'Note 1',
-    'Note 2',
-    'Note 3',
+    {
+        title: 'Note 1',
+        body: 'Body 1'
+    },
+    {
+        title: 'Note 2',
+        body: 'Body 2'
+    },
+    {
+        title: 'Note 3',
+        body: 'Body 3'
+    },
 ]
 
-// console.log(notes.pop())
-// notes.push('My new note')
+const findNote = function (notes, noteTitle) {
+    return notes.find(function (note, index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+}
 
-// console.log(notes.shift())
-// console.log(notes.unshift('My First Note'))
-
-// notes.splice(1,1,'New second item')
-
-notes[2] = 'new note 3'
-
-
-notes.forEach(function (item, index) {
-    console.log(index)
-    console.log(item)
-});
-
-console.log(notes.length)
-console.log(notes)
-
-
-for (let count = 2; count >= 0; count--) {
-    console.log(count)
+const findNotes = function (notes, query) {
+    return notes.filter(function (note, index) {
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+        return isTitleMatch || isBodyMatch
+    })
 }
 
 
-for (let count = notes.length - 1; count >= 0; count--) {
-    console.log(notes[count])
-}
+console.log(findNotes(notes, 'Note 1'))
+
+// const findNote = function (notes, noteTitle) {
+//     const index = notes.findIndex(function (note, index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+//     return notes[index]
+// }
+
+const note = findNote(notes, 'note 2')
+console.log(note)
+
