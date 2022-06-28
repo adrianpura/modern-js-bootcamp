@@ -21,17 +21,51 @@ const todos = [
     }
 ]
 
-const incTodos = todos.filter(function (todo) {
-    return !todo.completed
+const filters = {
+    searchText: ''
+}
+
+
+document.querySelector('#add-todo').addEventListener('click', function (e) {
+    console.log('adding todo')
 })
 
-const summary = document.createElement('h2')
-summary.textContent = `You have ${incTodos.length} left`
-document.querySelector('body').appendChild(summary)
+document.querySelector('#new-todo-text').addEventListener('input', function (e) {
+    console.log(e.target.value)
+})
 
+const renderTodo = function (todos, filter) {
+    const filteredTodos = todos.filter(function (todo) {
+        return todo.text.toLowerCase().includes(filter.searchText.toLowerCase())
+    })
 
-todos.forEach(function (todo) {
-    const p = document.createElement('p')
-    p.textContent = todo.text
-    document.querySelector('body').appendChild(p)
+    const incTodos = filteredTodos.filter(function (todo) {
+        return !todo.completed
+    })
+
+    document.querySelector('#todos').innerHTML = ''
+    
+    const summary = document.createElement('h2')
+    summary.textContent = `You have ${incTodos.length} left`
+    document.querySelector('#todos').appendChild(summary)
+    
+    
+    filteredTodos.forEach(function (todo) {
+        const p = document.createElement('p')
+        p.textContent = todo.text
+        document.querySelector('#todos').appendChild(p)
+    })
+    
+
+    // filteredTodos.forEach(function (todo) {
+    //     const todoEl = document.createElement('p')
+    //     todoEl.textContent = todo.text
+    //     document.querySelector('#todos').appendChild(todoEl)
+    // })
+}
+renderTodo(todos, filters)
+
+document.querySelector('#search-todo').addEventListener('input', function (e) {
+    filters.searchText = e.target.value
+    renderTodo(todos, filters)
 })
