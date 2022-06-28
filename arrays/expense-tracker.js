@@ -29,15 +29,6 @@ const account = {
     }
 }
 
-
-const addExpense = function (desc, amount) {
-
-}
-
-const getAccountSummary = function () {
-
-}
-
 account.addExpense('Rent', 950)
 account.addExpense('Coffee', 2)
 account.addIncome('Job', 1000)
