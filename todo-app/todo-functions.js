@@ -16,14 +16,27 @@ const saveTodo = function (todos) {
 
 //generate the DOM structure for a todo
 const generateTodoDOM = function (todo) {
-    const p = document.createElement('p')
-    if (todo.text.length > 0) {
-        p.textContent = todo.text
-    } else {
-        p.textContent = 'unnamed todo'
-    }
+    const todoEl = document.createElement('div')
+    const checkboxEl = document.createElement('input')
+    const spanEl = document.createElement('span')
+    const buttonEl = document.createElement('button')
 
-    return p
+
+    checkboxEl.setAttribute('type', 'checkbox')
+    todoEl.appendChild(checkboxEl)
+    
+
+    if (todo.text.length > 0) {
+        spanEl.textContent = todo.text
+    } else {
+        spanEl.textContent = 'unnamed todo'
+    }
+    todoEl.appendChild(spanEl)
+
+    buttonEl.textContent = 'x'
+    todoEl.appendChild(buttonEl)
+
+    return todoEl
 }
 
 
