@@ -1,7 +1,8 @@
 let notes = getSavedNotes()
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    sortBy:'byEdited'
 }
 
 renderNotes(notes, filters)
@@ -9,10 +10,13 @@ renderNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', function (e) {
     const id = uuidv4();
+    const timestamp = moment().valueOf()
     notes.push({
         id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timestamp,
+        updatedAt: timestamp
     })
     saveNotes(notes)
     location.assign(`/edit.html#${id}`)
@@ -25,7 +29,8 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 
 
 document.querySelector('#filter-by').addEventListener('change', function (e) {
-    console.log(e.target.value)
+    filters.sortBy = e.target.value
+    renderNotes(notes,filters)
 })
 
 window.addEventListener('storage', function (e) {
@@ -35,12 +40,15 @@ window.addEventListener('storage', function (e) {
     }
 })
 
-const date1 = new Date('January 24 1996 12:00:00')
-const date2 = new Date()
-const timestamp1 = date1.getTime()
-const timestamp2 = date2.getTime()
-if (timestamp1 < timestamp2) {
-    console.log(date1.toDateString())
-} else if (timestamp2 < timestamp1) {
-    console.log(date2.toString)
-}
+// const now = moment()
+// now.subtract(1, 'week').subtract(20, 'days')
+// console.log(now.format('MMMM Do, YYYY'))
+// console.log(now.fromNow())
+// const nowTimestamp = now.valueOf()
+// console.log(moment(nowTimestamp).toString())
+
+// const myBday = moment()
+// myBday.year(1996).month(0).date(24)
+
+
+// console.log(myBday.format('MMM D, YYYY'))

@@ -7,10 +7,18 @@
     <title>Edit Note</title>
   </head>
   <body>
-      <a href="/index.html">Home</a>
-      <input type="text" name="" id="note-title" placeholder="note title">
-      <textarea name="" id="note-body" cols="30" rows="10" placeholder="enter note text"></textarea>
-      <button id="remove-note">Remove Note</button>
+    <a href="/index.html">Home</a>
+    <input type="text" name="" id="note-title" placeholder="note title" />
+    <span id="last-edited"></span>
+    <textarea
+      name=""
+      id="note-body"
+      cols="30"
+      rows="10"
+      placeholder="enter note text"
+    ></textarea>
+    <button id="remove-note">Remove Note</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
     <script src="notes-functions.js"></script>
     <script src="notes-edit.js"></script>
   </body>
