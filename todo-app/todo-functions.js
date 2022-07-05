@@ -1,11 +1,12 @@
 //read existing todo from the local storage
 const getSavedTodos = () => {
     const todosJSON = localStorage.getItem('todos')
-    if (todosJSON !== null) {
-        return JSON.parse(todosJSON)
-    } else {
-        return []
-    }
+    return todosJSON !== null ? JSON.parse(todosJSON) : []
+    // if (todosJSON !== null) {
+    //     return JSON.parse(todosJSON)
+    // } else {
+    //     return []
+    // }
 }
 
 //save the todo to local storage
@@ -72,9 +73,7 @@ const renderTodo = (todos, filters) => {
         return searchTextMatch && hideCompletedMatch
     })
 
-    const incTodos = filteredTodos.filter((todo) => {
-        return !todo.completed
-    })
+    const incTodos = filteredTodos.filter((todo) => !todo.completed)
 
     document.querySelector('#todos').innerHTML = ''
 
