@@ -1,3 +1,5 @@
+'use strict'
+
 //read existing todo from the local storage
 const getSavedTodos = () => {
     const todosJSON = localStorage.getItem('todos')
