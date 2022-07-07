@@ -1,12 +1,11 @@
 //read existing todo from the local storage
 const getSavedTodos = () => {
     const todosJSON = localStorage.getItem('todos')
-    return todosJSON ? JSON.parse(todosJSON) : []
-    // if (todosJSON !== null) {
-    //     return JSON.parse(todosJSON)
-    // } else {
-    //     return []
-    // }
+    try {
+        return todosJSON ? JSON.parse(todosJSON) : []
+    } catch (error) {
+        return []
+    }
 }
 
 //save the todo to local storage
