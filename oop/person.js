@@ -25,9 +25,11 @@ Person.prototype.setName = function (fullName) {
 
 
 const me = new Person('Adrian', 'Adrian', 26, ['teaching', 'biking'])
+me.getBio = function(){
+    return 'fake'
+}
 me.setName('Adrian Pura')
 console.log(me.getBio())
-
 
 const person2 = new Person('Person2', 'Person2', 22)
 console.log(person2.getBio())
