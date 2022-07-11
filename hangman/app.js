@@ -1,10 +1,15 @@
+// Primitive value : String, Number,Boolean,null,undefined
 
-const product = new Object({
-    name: 'Influence'
-})
+//Object : myObject --> Object.prototype--> null
+//Array: myArray --> Array.prototype--> Object.prototype--> null
+//Function: myFunc --> Function.prototype --> Object.prototype --> null
+//String: myString --> String.prototype --> Object.prototype --> null
+//Number: myNumber --> Number.prototype --> Object.prototype --> null
+//Boolean: myBoolean --> Boolean.prototype --> Object.prototype --> null
 
-Object.prototype.someNewMethod = () => 'this is new function'
-
-//hasOwnProperty
-console.log(product.hasOwnProperty('hasOwnProperty'))
+const product = 'Computer'
 console.log(product)
+
+
+const otherProduct = new String('Phone')
+console.log(otherProduct)
