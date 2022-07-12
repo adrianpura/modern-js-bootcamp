@@ -28,28 +28,7 @@ getCountryDetails(countryCode, (error, countryDetails) => {
     if (error) {
         console.log(`Error: ${error}`)
     } else {
-        console.log(countryDetails)
+        console.log(countryDetails.name)
     }
 })
 
-
-// //making an http request
-
-// // console.log(request.responseText)
-
-// const countryCode = 'PH'
-// const countryRequest = new XMLHttpRequest()
-
-// countryRequest.addEventListener('readystatechange', (e) => {
-
-//     if (e.target.readyState === 4 && e.target.status === 200) {
-//         const data = JSON.parse(e.target.responseText)
-//         const country = data.find((country) => country.alpha2Code === countryCode)
-//         console.log(country.name)
-//     } else if (e.target.readyState === 4) {
-//         console.log('error')
-//     }
-// })
-
-// countryRequest.open('GET', 'http://restcountries.com/v2/all', true)
-// countryRequest.send() 
