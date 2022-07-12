@@ -15,8 +15,7 @@ window.addEventListener('keypress', (e) => {
     guessesEl.textContent = hangman1.statusMessage
 })
 
-
-getPuzzle((error, puzzle) => {
+getPuzzle("2", (error, puzzle) => {
     if (error) {
         console.log(`Error: ${error}`)
     } else {
@@ -24,6 +23,14 @@ getPuzzle((error, puzzle) => {
     }
 })
 
+const countryCode = 'PH'
+getCountryDetails(countryCode, (error, countryDetails) => {
+    if (error) {
+        console.log(`Error: ${error}`)
+    } else {
+        console.log(countryDetails)
+    }
+})
 
 
 // //making an http request
@@ -45,5 +52,4 @@ getPuzzle((error, puzzle) => {
 // })
 
 // countryRequest.open('GET', 'http://restcountries.com/v2/all', true)
-// countryRequest.send()
-// // console.log(request.responseText)
+// countryRequest.send() 
