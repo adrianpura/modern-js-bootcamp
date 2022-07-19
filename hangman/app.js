@@ -17,33 +17,20 @@ window.addEventListener('keypress', (e) => {
 
 getPuzzle('2').then((puzzle) => {
     console.log(puzzle)
-} ).catch((err) => {
+}).catch((err) => {
     console.log('err: ', err);
 })
 
-const countryCode = 'JP'
-getCountryDetails(countryCode).then((country) => {
+
+// https://ipinfo.io/json?token=7eaf207ba69c2c
+getLocation().then((data) => {
+    
+    return getCountryDetails(data.country)
+}).then((country) => {
+    // console.log(`You are currently in ${data.city},${data.region} ${country.name}`);
     console.log(country.name)
-} ).catch((err) => {
-    console.log('err: ', err);
-})
+}).catch((err) => {
+        console.log('err: ', err);
+    })
 
-// getCountryDetails(countryCode).then((countryDetails) => {
-//     console.log('countryDetails: ', countryDetails.name);
-// }, (err) => {
-//     console.log('err: ', err);
-
-// })
-
-// fetch('https://cors-anywhere.herokuapp.com/http://puzzle.mead.io/puzzle', {}).then((response) => {
-//     if (response.status === 200) {
-//         return response.json()
-//     } else {
-//         throw new Error('Unable to fetch the puzzle')
-//     }
-// }).then((data) => {
-//     console.log('data: ', data.puzzle);
-// }).catch((error) => {
-//     console.log('error: ', error);
-// })
 

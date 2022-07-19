@@ -24,6 +24,15 @@ const getCountryDetails = (countryCode) => {
 
 }
 
+const getLocation = () => {
+    return fetch('https://cors-anywhere.herokuapp.com/https://ipinfo.io/json?token=7eaf207ba69c2c').then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error('unable to fetch data')
+        }
+    })
+}
 
 
 // const getCountryDetails = (countryCode) => new Promise((resolve, reject) => {
