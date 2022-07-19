@@ -20,17 +20,13 @@ getPuzzle('2').then((puzzle) => {
 }).catch((err) => {
     console.log('err: ', err);
 })
+ 
 
+// getCurrentCountry().then((country) => {
+//     console.log('country: ', country.name);
+// }).catch((err) => {
+//     console.log('err: ', err);
+// })
 
-// https://ipinfo.io/json?token=7eaf207ba69c2c
-getLocation().then((data) => {
-    
-    return getCountryDetails(data.country)
-}).then((country) => {
-    // console.log(`You are currently in ${data.city},${data.region} ${country.name}`);
-    console.log(country.name)
-}).catch((err) => {
-        console.log('err: ', err);
-    })
 
 

@@ -1,56 +1,36 @@
-const getPuzzle = (wordCount) => {
-    return fetch(`https://cors-anywhere.herokuapp.com/https://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
-        .then((response) => {
-            if (response.status === 200) {
-                return response.json()
-            } else {
-                throw new Error('unable to fetch puzzle')
-            }
-        }).then((data) => {
-            return data.puzzle
-        })
+const getPuzzle = async (wordCount) => {
+    const response = await fetch(`https://cors-anywhere.herokuapp.com/https://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
+    if (response.status === 200) {
+        const data = await response.json()
+        return data.puzzle
+    } else {
+        throw new Error('unable to fetch puzzle')
+    }
 }
 
-const getCountryDetails = (countryCode) => {
-    return fetch('https://cors-anywhere.herokuapp.com/https://restcountries.com/v2/all')
-        .then((response) => {
-            if (response.status === 200) {
+const getCountryDetails = async (countryCode) => {
+    const response = await fetch('https://cors-anywhere.herokuapp.com/https://restcountries.com/v2/all')
+    if (response.status === 200) {
+        let data = await response.json()
+        return data.find((country) => country.alpha2Code === countryCode)
+    } else {
+        throw new Error('Error has taken place')
+    }
+}
 
-                return response.json()
-            } else {
-                throw new Error('Error has taken place')
-            }
-        }).then((data) => data.find((country) => country.alpha2Code === countryCode))
+const getLocation = async () => {
+    const response = await fetch('https://cors-anywhere.herokuapp.com/https://ipinfo.io/json?token=7eaf207ba69c2c')
+    if (response.status === 200) {
+        return response.json()
+    } else {
+        throw new Error('unable to fetch data')
+    }
 
 }
 
-const getLocation = () => {
-    return fetch('https://cors-anywhere.herokuapp.com/https://ipinfo.io/json?token=7eaf207ba69c2c').then((response) => {
-        if (response.status === 200) {
-            return response.json()
-        } else {
-            throw new Error('unable to fetch data')
-        }
-    })
+const getCurrentCountry = async () => {
+    const location = await getLocation() 
+    return getCountryDetails(location.country)
 }
 
-
-// const getCountryDetails = (countryCode) => new Promise((resolve, reject) => {
-
-//     const countryRequest = new XMLHttpRequest()
-
-//     countryRequest.addEventListener('readystatechange', (e) => {
-
-//         if (e.target.readyState === 4 && e.target.status === 200) {
-//             const data = JSON.parse(e.target.responseText)
-//             const country = data.find((country) => country.alpha2Code === countryCode)
-//             resolve(country)
-//         } else if (e.target.readyState === 4) {
-//             reject('Error has taken place')
-//         }
-//     })
-
-//     countryRequest.open('GET', 'https://cors-anywhere.herokuapp.com/http://restcountries.com/v2/all', true)
-//     countryRequest.send()
-// })
 
