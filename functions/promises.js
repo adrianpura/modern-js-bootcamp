@@ -42,10 +42,10 @@ getDataPromise(2).then((data) => {
     console.log('err: ', err);
 })
 
-getDataPromise('10').then((data) => {
+getDataPromise(10).then((data) => {
     return getDataPromise(data)
 }).then((data) => {
-    return getDataPromise(data)
+    return 'this is some test data'
 }).then((data) => {
     console.log('data: ', data);
 }).catch((err) => {
